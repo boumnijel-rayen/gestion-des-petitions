@@ -11,6 +11,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
+
+    <!--HEADER-->
+
     <header>
         <nav>
             <div class="left-nav">
@@ -49,7 +52,15 @@
             </figure>
         </div>
     </header>
+
+    <!--QOUTE SECTION-->
     
+    <section id="qoute">
+        <div class="contenu-qo">
+            <img src="img/quote.webp" alt="">
+            <h3>to improve is to <b><font color="#f44336">change</font></b>; to be perfect is to <b><font color="#f44336">change</font></b> often</h3>
+        </div>
+    </section>
     
 </body>
 <script src="toggleMenu.js"></script>
