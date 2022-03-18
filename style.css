@@ -230,7 +230,7 @@ header nav .bi-list{
 
 #qoute{
     width: 100%;
-    height: 400px;
+    height: 500px;
     background-color: #F8F9FA;
     position: relative;
 }
@@ -257,6 +257,62 @@ header nav .bi-list{
     font-size: 38px;
 }
 
+/*comment ça marche*/
+
+#how-section{
+    width: 100%;
+    height: 400px;
+    background-image: linear-gradient(rgba(0,0,0,0.6),
+    rgba(0,0,0,0.6)),url(img/comment\ ça\ marche.webp);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+#how-section .contenu-how{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 100px;
+}
+
+#how-section .contenu-how h4{
+    color: white;
+    font-size: 42px;
+    font-family: 'Oswald', sans-serif;
+}
+
+#how-section .contenu-how p{
+    color: white;
+}
+
+#steps{
+    width: 100%;
+    height: 400px;
+    background-color: #F8F9FA;
+}
+
+#steps .container{
+    padding: 80px;
+}
+
+#steps .container .row .col{
+    margin: 0 30px;
+    padding: 20px;
+    box-shadow: 1px 1px 10px #888888;
+    background-color: #fff;
+    text-align: center;
+}
+
+#steps .container .col i{
+    font-size: 45px;
+}
+
+#steps .container .col h4{
+    margin-top: 10px;
+    margin-bottom: 15px;
+    color: #f44336;
+}
 
 
 
@@ -306,7 +362,7 @@ header nav .bi-list{
     /*QOUTE SECTION*/
 
     #qoute{
-        height: 500px;
+        height: 650px;
     }
 
 }

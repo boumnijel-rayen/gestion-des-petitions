@@ -59,9 +59,42 @@
         <div class="contenu-qo">
             <img src="img/quote.webp" alt="">
             <h3>to improve is to <b><font color="#f44336">change</font></b>; to be perfect is to <b><font color="#f44336">change</font></b> often</h3>
+            <i class="bi bi-dash-lg"></i><p>Winston Churchill</p>
         </div>
     </section>
-    
+
+    <!--comment ça marche-->
+
+    <section id="how-section">
+        <div class="contenu-how">
+            <h4>Comment marche cette plateforme ?</h4>
+            <p>Découvrez comment déposer ou signer une pétition</p>
+        </div>
+    </section>
+
+    <section id="steps">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <i class="bi bi-box-arrow-in-right"></i>
+                    <h4>inscrivez-vous</h4>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+                </div>
+                <div class="col">
+                    <i class="bi bi-pencil-square"></i>
+                    <h4>créer votre pétition</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                </div>
+                <div class="col">
+                    <i class="bi bi-pen"></i>
+                    <h4>signer des pétitions</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <?php
+    ?>
 </body>
 <script src="toggleMenu.js"></script>
 </html>
