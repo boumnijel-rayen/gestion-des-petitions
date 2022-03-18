@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pétitions</title>
     <link rel="shortcut icon" href="img/petition_logo.webp" type="image/png">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
@@ -19,10 +19,9 @@
             <div class="left-nav">
                 <a href="#"><img src="img/petition_logo.webp" alt=""></a>
                 <ul id="list">
-                    <a href="#"><li>link1</li></a>
-                    <a href="#"><li>link2</li></a>
-                    <a href="#"><li>link3</li></a>
-                    <a href="#"><li>link4</li></a>
+                    <a href="#how-section"><li>Découvrez la plateforme</li></a>
+                    <a href="#"><li>Inscription</li></a>
+                    <a href="#"><li>Espace Admin</li></a>
                 </ul>
             </div>
             <div class="right-nav">
@@ -93,8 +92,20 @@
             </div>
         </div>
     </section>
+
+    <!--FOOTER-->
+
+    <footer>
+        <ul>
+            <li><a href="https://github.com/boumnijel-rayen" target="_blank"><i class="bi bi-github"></i></a></li>
+            <li><a href="https://www.facebook.com/rayen.boumnijel/" target="_blank"><i class="bi bi-facebook"></i></a></li>
+            <li><a href="https://www.instagram.com/Rayen_boumnijel/?fbclid=IwAR2P8HQ-dnGLlI8Ahn3OSq1xIqW662KvAV2NWMcOs61ixz7QiAtpFAOH24o" target="_blank"><i class="bi bi-instagram"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/rayen-boumnijel-3774b91b7/" target="_blank"><i class="bi bi-linkedin"></i></a></li>
+        </ul>
+        <p>Copyright ©2021 Boumnijel Rayen, all rights reserved</p>
+    </footer>
     <?php
     ?>
 </body>
-<script src="toggleMenu.js"></script>
+<script src="js/toggleMenu.js"></script>
 </html>
