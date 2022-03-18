@@ -25,7 +25,7 @@
                 </ul>
             </div>
             <div class="right-nav">
-                <a href="#"><button class="btnn-c">Connecter</button></a>
+                <a href="LoginMembre.php"><button class="btnn-c">Connecter</button></a>
                 <div class="social">
                     <a href="#"><i class="bi bi-github"></i></a>
                     <a href="#"><i class="bi bi-facebook"></i></a>
