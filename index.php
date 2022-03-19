@@ -20,7 +20,7 @@
                 <a href="#"><img src="img/petition_logo.webp" alt=""></a>
                 <ul id="list">
                     <a href="#how-section"><li>Découvrez la plateforme</li></a>
-                    <a href="#"><li>Inscription</li></a>
+                    <a href="inscription.php"><li>Inscription</li></a>
                     <a href="#"><li>Espace Admin</li></a>
                 </ul>
             </div>
@@ -102,7 +102,7 @@
             <li><a href="https://www.instagram.com/Rayen_boumnijel/?fbclid=IwAR2P8HQ-dnGLlI8Ahn3OSq1xIqW662KvAV2NWMcOs61ixz7QiAtpFAOH24o" target="_blank"><i class="bi bi-instagram"></i></a></li>
             <li><a href="https://www.linkedin.com/in/rayen-boumnijel-3774b91b7/" target="_blank"><i class="bi bi-linkedin"></i></a></li>
         </ul>
-        <p>Copyright ©2021 Boumnijel Rayen, all rights reserved</p>
+        <p>Copyright ©2022 Boumnijel Rayen, all rights reserved</p>
     </footer>
     <?php
     ?>

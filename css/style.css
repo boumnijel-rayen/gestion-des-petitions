@@ -51,7 +51,7 @@ header nav ul li::before{
     left: 50%;
     transform: translateX(-50%);
     bottom: -9px;
-    transition: all 1.6s ease;
+    transition: all 0.8s ease;
 }
 
 header nav ul li:hover::before{

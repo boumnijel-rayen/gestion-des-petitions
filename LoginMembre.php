@@ -13,7 +13,7 @@
 <body>
     <a class="accueil" href="index.php"><i class="bi bi-arrow-left"></i></a>
     <div class="center">
-        <h1>Connexion</h1>
+        <h2>Connexion</h2>
         <form method="post">
             <div class="txt">
                 <input type="text" required>
@@ -31,5 +31,7 @@
             </div>
         </form>
     </div>
+    <?php
+    ?>
 </body>
 </html>
