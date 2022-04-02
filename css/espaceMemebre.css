@@ -1,0 +1,148 @@
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+
+/*HEADER*/
+
+header nav img{
+    margin:12px;
+    width: 50px;
+    height: 50px;
+}
+
+header nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 60px;
+    background-color: #F8F9FA;
+}
+
+header nav .left-nav{
+    display: flex;
+}
+
+header nav .left-nav ul{
+    display: flex;
+}
+
+header nav .left-nav ul li{
+    list-style: none;
+    position: relative;
+}
+
+header nav .left-nav ul a{
+    text-decoration: none;
+    color: black;
+    margin-top: 14px;
+    padding: 12px;
+}
+
+header nav .left-nav ul li::before{
+    content: '';
+    width: 0;
+    height: 3px;
+    background-color: #f44336;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -9px;
+    transition: all 0.8s ease;
+}
+
+header nav .left-nav ul li:hover::before{
+    width: 100%;
+}
+
+header nav .left-nav ul a:hover{
+    color: black;
+}
+
+header nav .right-nav {
+    display: flex;
+}
+
+header nav .right-nav img{
+    border-radius: 50px;
+}
+
+header nav .right-nav ul{
+    display: block;
+    margin-top: 10px;
+    position: relative;
+    right: 20px;
+}
+
+header nav .right-nav ul li{
+    list-style: none;
+}
+
+header nav .right-nav ul li:nth-child(1){
+    font-weight: 600;
+    color: #f44336;
+}
+
+header nav .bi-list{
+    display: none;
+    font-size: 40px;
+    position: relative;
+    top: 15%;
+}
+
+.titre-pt{
+    width: 100%;
+    height: 300px;
+    background-color: #212529;
+    position: relative;
+}
+
+.titre-pt h2{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 50px;
+    font-weight: 700;
+    text-shadow: 0px 1px 10px #f44336;
+    color: white;
+}
+
+
+
+
+
+@media screen and (max-width : 600px) {
+    
+    /*HEADER*/
+
+    header nav .bi-list{
+        display: block;
+    }
+
+    header nav .left-nav ul{
+        width: 100%;
+        text-align: center;
+        display: block;
+        position: absolute;
+        overflow: hidden;
+        top: 80px;
+        left: 0;
+        z-index: 3;
+        background-color: #F8F9FA;
+        transition: 1s;
+    }
+
+    header nav .left-nav ul li{
+        position: relative;
+        left: -5%;
+    }
+
+    header nav{
+        height: 80px;
+        padding: 0 20px;
+    }
+
+    header nav ul li::before{
+        display: none;
+    }
+}

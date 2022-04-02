@@ -14,7 +14,7 @@
     <a class="accueil" href="index.php"><i class="bi bi-arrow-left"></i></a>
     <div class="center">
         <h2>Connexion</h2>
-        <form method="post">
+        <form method="post" action="espaceMembre.php">
             <div class="txt">
                 <input type="text" required>
                 <span></span>
@@ -27,7 +27,7 @@
             </div>
             <input class="btnn" type="submit" value="se connecter">
             <div class="signup">
-            Vous n'avez pas de compte? <a href="#">S'inscrire</a>
+            Vous n'avez pas de compte? <a href="inscription.php">S'inscrire</a>
             </div>
         </form>
     </div>

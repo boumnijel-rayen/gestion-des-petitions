@@ -14,7 +14,7 @@
     <a class="accueil" href="index.php"><i class="bi bi-arrow-left"></i></a>
     <div class="center">
         <h2>Inscription</h2>
-        <form action="post" name="f">
+        <form action="LoginMembre.php" name="f">
             <div class="block_txt">
                 <div class="txt">
                     <input type="text" id="nom" required>
@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="txt">
-                <input type="text" id="email" required>
+                <input type="email" id="email" required>
                 <span></span>
                 <label>Email</label>
             </div>
