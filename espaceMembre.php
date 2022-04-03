@@ -165,6 +165,16 @@
             </div>
         </div>
     </section>
+
+    <footer>
+        <ul>
+            <li><a href="https://github.com/boumnijel-rayen" target="_blank"><i class="bi bi-github"></i></a></li>
+            <li><a href="https://www.facebook.com/rayen.boumnijel/" target="_blank"><i class="bi bi-facebook"></i></a></li>
+            <li><a href="https://www.instagram.com/Rayen_boumnijel/?fbclid=IwAR2P8HQ-dnGLlI8Ahn3OSq1xIqW662KvAV2NWMcOs61ixz7QiAtpFAOH24o" target="_blank"><i class="bi bi-instagram"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/rayen-boumnijel-3774b91b7/" target="_blank"><i class="bi bi-linkedin"></i></a></li>
+        </ul>
+        <p>Copyright ©2022 Boumnijel Rayen, all rights reserved</p>
+    </footer>
     <?php
     ?>
 </body>
