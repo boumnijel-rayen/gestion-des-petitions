@@ -39,10 +39,129 @@
     <section class="lst-petition">
         <div class="container">
             <div class="row">
-                <div class="col">col</div>
-                <div class="col">col</div>
-                <div class="col">col</div>
-                <div class="col">col</div>
+                <div class="col">
+                    <img src="img/petition-photo.webp" alt="">
+                    <h4>Titre de petition</h4>
+                    <p><span>150</span> signatures</p>
+                    <p class="petition-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, perspiciatis non, illo, accusantium commodi dolore dolores temporibus veniam reprehenderit in sapiente quo totam id sit sunt minus quae tempore optio quibusdam odio enim cumque asperiores?</p>
+                    <div class="flex">
+                        <form action="petition.php" method="POST">
+                            <input class="hide" name="code" type="text" value="1234">
+                            <input type="submit" class="button-81" value="Signer">
+                        </form>
+                        <form action="petition.php" method="POST">
+                            <input class="hide" name="code" type="text" value="1234">
+                            <input type="submit" class="button-81" value="S’opposer">
+                        </form>
+                    </div>
+                    <form action="petition.php" method="POST">
+                        <input class="hide" name="code" type="text" value="1234">
+                        <input type="submit" class="btnn" value="Voir Plus">
+                    </form>
+                </div>
+                <div class="col">
+                <img src="img/petition-photo.webp" alt="">
+                    <h4>Titre de petition</h4>
+                    <p><span>150</span> signatures</p>
+                    <p class="petition-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, perspiciatis non, illo, accusantium commodi dolore dolores temporibus veniam reprehenderit in sapiente quo totam id sit sunt minus quae tempore optio quibusdam odio enim cumque asperiores?</p>
+                    <div class="flex">
+                        <form action="petition.php" method="POST">
+                            <input class="hide" name="code" type="text" value="1234">
+                            <input type="submit" class="button-81" value="Signer">
+                        </form>
+                        <form action="petition.php" method="POST">
+                            <input class="hide" name="code" type="text" value="1234">
+                            <input type="submit" class="button-81" value="S’opposer">
+                        </form>
+                    </div>
+                    <form action="petition.php" method="POST">
+                        <input class="hide" name="code" type="text" value="1234">
+                        <input type="submit" class="btnn" value="Voir Plus">
+                    </form>
+                </div>
+                <div class="col">
+                <img src="img/petition-photo.webp" alt="">
+                    <h4>Titre de petition</h4>
+                    <p><span>150</span> signatures</p>
+                    <p class="petition-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, perspiciatis non, illo, accusantium commodi dolore dolores temporibus veniam reprehenderit in sapiente quo totam id sit sunt minus quae tempore optio quibusdam odio enim cumque asperiores?</p>
+                    <div class="flex">
+                        <form action="petition.php" method="POST">
+                            <input class="hide" name="code" type="text" value="1234">
+                            <input type="submit" class="button-81" value="Signer">
+                        </form>
+                        <form action="petition.php" method="POST">
+                            <input class="hide" name="code" type="text" value="1234">
+                            <input type="submit" class="button-81" value="S’opposer">
+                        </form>
+                    </div>
+                    <form action="petition.php" method="POST">
+                        <input class="hide" name="code" type="text" value="1234">
+                        <input type="submit" class="btnn" value="Voir Plus">
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <img src="img/petition-photo.webp" alt="">
+                    <h4>Titre de petition</h4>
+                    <p><span>150</span> signatures</p>
+                    <p class="petition-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, perspiciatis non, illo, accusantium commodi dolore dolores temporibus veniam reprehenderit in sapiente quo totam id sit sunt minus quae tempore optio quibusdam odio enim cumque asperiores?</p>
+                    <div class="flex">
+                        <form action="petition.php" method="POST">
+                            <input class="hide" name="code" type="text" value="1234">
+                            <input type="submit" class="button-81" value="Signer">
+                        </form>
+                        <form action="petition.php" method="POST">
+                            <input class="hide" name="code" type="text" value="1234">
+                            <input type="submit" class="button-81" value="S’opposer">
+                        </form>
+                    </div>
+                    <form action="petition.php" method="POST">
+                        <input class="hide" name="code" type="text" value="1234">
+                        <input type="submit" class="btnn" value="Voir Plus">
+                    </form>
+                </div>
+                <div class="col">
+                <img src="img/petition-photo.webp" alt="">
+                    <h4>Titre de petition</h4>
+                    <p><span>150</span> signatures</p>
+                    <p class="petition-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, perspiciatis non, illo, accusantium commodi dolore dolores temporibus veniam reprehenderit in sapiente quo totam id sit sunt minus quae tempore optio quibusdam odio enim cumque asperiores?</p>
+                    <div class="flex">
+                        <form action="petition.php" method="POST">
+                            <input class="hide" name="code" type="text" value="1234">
+                            <input type="submit" class="button-81" value="Signer">
+                        </form>
+                        <form action="petition.php" method="POST">
+                            <input class="hide" name="code" type="text" value="1234">
+                            <input type="submit" class="button-81" value="S’opposer">
+                        </form>
+                    </div>
+                    <form action="petition.php" method="POST">
+                        <input class="hide" name="code" type="text" value="1234">
+                        <input type="submit" class="btnn" value="Voir Plus">
+                    </form>
+                </div>
+                <div class="col">
+                <img src="img/petition-photo.webp" alt="">
+                    <h4>Titre de petition</h4>
+                    <p><span>150</span> signatures</p>
+                    <p class="petition-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, perspiciatis non, illo, accusantium commodi dolore dolores temporibus veniam reprehenderit in sapiente quo totam id sit sunt minus quae tempore optio quibusdam odio enim cumque asperiores?</p>
+                    <div class="flex">
+                        <form action="petition.php" method="POST">
+                            <input class="hide" name="code" type="text" value="1234">
+                            <input type="submit" class="button-81" value="Signer">
+                        </form>
+                        <form action="petition.php" method="POST">
+                            <input class="hide" name="code" type="text" value="1234">
+                            <input type="submit" class="button-81" value="S’opposer">
+                        </form>
+                    </div>
+                    <form action="petition.php" method="POST">
+                        <input class="hide" name="code" type="text" value="1234">
+                        <input type="submit" class="btnn" value="Voir Plus">
+                    </form>
+                </div>
             </div>
         </div>
     </section>
