@@ -25,12 +25,16 @@ function verif(){
     var prof = document.getElementById('prof');
     var admin = document.getElementById('pa');
     var file = document.getElementById('file').value;
+    var email = document.getElementById('email').value;
 
     if ((nom !='') && (!isNaN(nom))){
         alert("le nom doit etre alphabitique !");
         return false;
     }else if ((prenom != '') && (!isNaN(prenom))){
         alert("le prenom doit etre alphabitique !");
+        return false;
+    }else if ((email != '') && ( (email.indexOf('@') == -1) || (email.indexOf('.') == -1) )){
+        alert("erreur au niveau de email");
         return false;
     }else if ((mdp != '') && (mdp != '') && (mdp.length < 8)){
         alert("mot de passe doit etre au minimum composé de 8 caractére !");

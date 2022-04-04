@@ -40,7 +40,7 @@
             <div class="contenu">
                 <h2><span>GESTION </span>DES<span> PETITIONS</span></h2>
                 <p>Déjà 227 763 357 signatures</p>
-                <button type="button" class="btn btn-outline-light">Lancer une Pétition</button>
+                <a href="LoginMembre.php"><button type="button" class="btn btn-outline-light">Lancer une Pétition</button></a>
             </div>   
             <figure>
                 <div></div>

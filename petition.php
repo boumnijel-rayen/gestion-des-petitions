@@ -13,13 +13,14 @@
 <body>
     <?php
     ?>
+    <a class="accueil" href="index.php"><i class="bi bi-arrow-left"></i></a>
     <section id="petition">
         <div class="container">
             <div class="row">
                 <div class="col-4 coll">
                     <img src="img/petition-photo.webp" alt="">
                     <h4><span class="vert">150</span> signatures</h4>
-                    <h4><span class="rouge">20</span> opposition</h4>
+                    <h4><span class="rouge">20</span> désapprouver</h4>
                     <div class="flex">
                         <form action="petition.php" method="POST">
                             <input class="hide" name="code" type="text" value="1234">
@@ -30,12 +31,40 @@
                             <input type="submit" class="button-81" value="S’opposer">
                         </form>
                     </div>
+                    <div class="flex">
+                        <form action="" method="post">
+                            <label for="pet-select">Liste d'approuver</label>
+                            <select name="pets" id="pet-select">
+                                <option value="dog">Dog</option>
+                                <option value="cat">Cat</option>
+                                <option value="hamster">Hamster</option>
+                                <option value="parrot">Parrot</option>
+                                <option value="spider">Spider</option>
+                                <option value="goldfish">Goldfish</option>
+                            </select>
+                        </form>
+                        <form action="" method="post">
+                            <label for="pet-select">Liste de désapprouver</label>
+                            <select name="pets" id="pet-select">
+                                <option value="dog">Dog</option>
+                                <option value="cat">Cat</option>
+                                <option value="hamster">Hamster</option>
+                                <option value="parrot">Parrot</option>
+                                <option value="spider">Spider</option>
+                                <option value="goldfish">Goldfish</option>
+                            </select>
+                        </form>
+                    </div>
                 </div>
                 <div class="col-8 coll">
-                    <h2>titre de pétition</h2>
+                    <div class="flex">
+                        <h2>titre de pétition</h2>
+                        <p>04/04/2022</p>
+                    </div>  
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi pariatur voluptates atque aliquid eligendi excepturi ex quo? Eos quo perspiciatis aut aliquid voluptates, veritatis aliquam fugit beatae asperiores, consequatur fugiat dolores maxime cupiditate saepe quaerat.</p>
+                    <p>créé par <span class="rouge">nom & prenom</span></p>
                     <form action="" method="post">
-                        <label for="comnt" class="form-label">Example textarea</label>
+                        <label for="comnt" class="form-label">écrire un commentaire</label>
                         <textarea class="form-control" id="comnt" rows="3"></textarea>
                         <input type="submit" class="btn btn-success" value="commenter">
                     </form>
