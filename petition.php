@@ -13,7 +13,9 @@
 <body>
     <?php
     ?>
-    <a class="accueil" href="index.php"><i class="bi bi-arrow-left"></i></a>
+    <form class="retour">
+        <input type = "button" value = "Retour"  onclick = "history.back()">
+    </form>
     <section id="petition">
         <div class="container">
             <div class="row">

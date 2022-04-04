@@ -22,6 +22,12 @@
                             <input type="submit" class="sbtn" value="liste des pétitions">
                         </li>
                     </form>
+                    <form action="creerPetition.php" method="post">
+                        <input type="text" class="hide" value="1234" name="code" id="code">
+                        <li>
+                            <input type="submit" class="sbtn" value="créer une pétition">
+                        </li>
+                    </form>
                     <form action="profile.php" method="post">
                         <input type="text" class="hide" name="code" id="code">
                         <li>
