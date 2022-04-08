@@ -14,27 +14,27 @@
     <a class="accueil" href="index.php"><i class="bi bi-arrow-left"></i></a>
     <div class="center">
         <h2>Inscription</h2>
-        <form action="LoginMembre.php" name="f">
+        <form action="" method="POST" name="f" enctype="multipart/form-data">
             <div class="block_txt">
                 <div class="txt">
-                    <input type="text" id="nom" required>
+                    <input type="text" id="nom" name="nom" required>
                     <span></span>
                     <label>Nom</label>
                 </div>
                 <div class="txt">
-                    <input type="text" id="prenom" required>
+                    <input type="text" id="prenom" name="prenom" required>
                     <span></span>
                     <label>Prénom</label>
                 </div>
             </div>
             <div class="txt">
-                <input type="email" id="email" required>
+                <input type="email" id="email" name="email" required>
                 <span></span>
                 <label>Email</label>
             </div>
             <div class="block_txt">
                 <div class="txt">
-                    <input type="password" id="mdp" required>
+                    <input type="password" id="mdp" name="mdp" required>
                     <span></span>
                     <label>Mot de passe</label>
                 </div>
@@ -55,7 +55,7 @@
             </div>
             <div class="file">
                 <label class="custom-file-upload" id="upl" oninput="file_selected();">
-                    <input type="file" id="file">
+                    <input type="file" id="file" name="file">
                     <i class="bi bi-cloud-arrow-up-fill"></i> Photo de profile
                 </label>
             </div>
@@ -64,6 +64,42 @@
         </form>
     </div>
     <?php
+
+    if (isset($_POST['email'])){
+        $v_email =  $_POST['email'];
+    
+        try {
+            $dbco = new PDO("mysql:host=localhost;dbname=projetpweb", "root", "");
+            $dbco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sth = $dbco->prepare("SELECT email FROM membre where email='".$v_email."'");
+            $sth->execute();
+            $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+            if (count($resultat) > 0){
+                echo "<script> alert('email déja existe !'); </script>";
+            }else{
+                $dossier = "img/";
+                $fichier = basename($_FILES['file']['name']);
+                $v_file = $dossier.$fichier;
+                $v_nom = $_POST['nom'];
+                $v_prenom = $_POST['prenom'];
+                $v_mdp = $_POST['mdp'];
+                $v_fonction = $_POST['fonct'];
+                
+                $sth1 = $dbco->prepare("INSERT INTO membre(Nom,Prenom,email,mdp,fonction,PhUrl) VALUES (?,?,?,?,?,?) ");
+                $sth1->execute(array($v_nom, $v_prenom, $v_email, $v_mdp, $v_fonction, $v_file));
+
+                echo '<script> window.location.replace("http://localhost/gestion%20des%20p%C3%A9titions/LoginMembre.php"); </script>';
+
+            }
+
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+    }
+
+    
     ?>
 </body>
 <script src="js/inscription.js"></script>
