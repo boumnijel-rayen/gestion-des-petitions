@@ -7,6 +7,7 @@
     <title>Connexion</title>
     <link rel="shortcut icon" href="img/petition_logo.webp" type="image/png">
     <link rel="stylesheet" href="css/loginStyle.css">
+    <link rel="stylesheet" href="css/LoginStyle2.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
@@ -14,24 +15,59 @@
     <a class="accueil" href="index.php"><i class="bi bi-arrow-left"></i></a>
     <div class="center">
         <h2>Connexion</h2>
-        <form method="post" action="espaceMembre.php">
+        <form method="post" action="">
             <div class="txt">
-                <input type="text" required>
+                <input type="text" name="email" required>
                 <span></span>
                 <label>Email</label>
             </div>
             <div class="txt">
-                <input type="password" required>
+                <input type="password" name="mdp" required>
                 <span></span>
                 <label>Mot de passe</label>
             </div>
             <input class="btnn" type="submit" value="se connecter">
-            <div class="signup">
-            Vous n'avez pas de compte? <a href="inscription.php">S'inscrire</a>
-            </div>
         </form>
+        <?php
+            if( (isset($_POST['email'])) && (isset($_POST['mdp'])) ){
+                $v_email = $_POST['email'];
+                $v_mdp = $_POST['mdp'];
+
+                try {
+                    $dbco = new PDO("mysql:host=localhost;dbname=projetpweb", "root", "");
+                    $dbco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $sth = $dbco->prepare("SELECT num_M ,email, mdp FROM membre where email='".$v_email."'");
+                    $sth->execute();
+                    $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+                    if (count($resultat) == 0){
+                        echo "<p class='erreur' >membre n'existe pas !</p>";
+                    }else{
+                        if ($v_mdp != $resultat[0]["mdp"]){
+                            echo '<p class="erreur" >mot de passe incorrecte !</p>';
+                        }else{
+                            echo '<form action="espaceMembre.php" method="post">
+                            <input class="hide" type="text" name="id" value="'.$resultat[0]["num_M"].'" id="id">
+                            <input class="hide" type="submit" id="click" value="">
+                            </form>';
+
+                            echo "<script>document.getElementById('click').click();</script>";
+                        }
+                        
+                    }
+
+                } catch (PDOException $e) {
+                    echo $e->getMessage();
+                }
+            }
+
+
+
+
+        ?>
+        <div class="signup">
+            Vous n'avez pas de compte? <a href="inscription.php">S'inscrire</a>
+        </div>
     </div>
-    <?php
-    ?>
 </body>
 </html>

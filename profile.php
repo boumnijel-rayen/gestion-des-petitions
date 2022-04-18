@@ -17,19 +17,28 @@
                 <a href="#"><img src="img/petition_logo.webp" alt=""></a>
                 <ul id="list">
                     <form action="espaceMembre.php" method="post">
-                        <input type="text" class="hide" value="1234" name="code" id="code">
+                        <?php
+                            $vID = $_POST['id'];
+                            echo '<input type="text" class="hide" value="'.$vID.'" name="id" id="id">';
+                        ?> 
                         <li>
                             <input type="submit" class="sbtn" value="liste des pétitions">
                         </li>
                     </form>
                     <form action="creerPetition.php" method="post">
-                        <input type="text" class="hide" value="1234" name="code" id="code">
+                        <?php
+                            $vID = $_POST['id'];
+                            echo '<input type="text" class="hide" value="'.$vID.'" name="id" id="id">';
+                        ?> 
                         <li>
                             <input type="submit" class="sbtn" value="créer une pétition">
                         </li>
                     </form>
                     <form action="" method="post">
-                        <input type="text" class="hide" name="code" id="code">
+                        <?php
+                            $vID = $_POST['id'];
+                            echo '<input type="text" class="hide" value="'.$vID.'" name="id" id="id">';
+                        ?>
                         <li>
                         <input type="submit" class="sbtn" value="profile">
                         </li>
@@ -39,8 +48,22 @@
             <div class="right-nav">
                 <img src="img/IMG_0130.webp" alt="">
                 <ul>
-                    <li>9999</li>
-                    <li>Nom & Prenom</li>
+                    <?php
+                        $vID = $_POST['id'];
+                        echo '<li>'.$vID.'</li>';
+                        try {
+                            $dbco = new PDO("mysql:host=localhost;dbname=projetpweb", "root", "");
+                            $dbco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                            $sth = $dbco->prepare("SELECT nom, prenom FROM membre where num_M=".$vID);
+                            $sth->execute();
+                            $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+                            echo '<li>'.$resultat[0]["nom"].' '.$resultat[0]["prenom"].'</li>';
+                         
+                        } catch (PDOException $e) {
+                            echo $e->getMessage();
+                        }
+                    ?>
                 </ul>
                 <a href="#" onclick="togglemenu();"><i class="bi bi-list"></i></a>
             </div>                 

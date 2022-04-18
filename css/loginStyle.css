@@ -122,6 +122,24 @@ form .txt input:focus ~ span::before,form .txt input:valid ~ span::before{
     color: #212529;
 }
 
+.erreur{
+    margin-top: 10px;
+    color: white;
+    width: 80%;
+    text-align: center;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 25px;
+    border-radius: 25px;
+    background-color: rgb(255, 78, 78);
+}
+
+.hide{
+    display: none;
+    visibility: hidden;
+}
+
 @media screen and (max-width : 600px){
     .center{
         width: 300px;
