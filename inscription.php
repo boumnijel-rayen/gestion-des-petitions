@@ -64,13 +64,14 @@
         </form>
     </div>
     <?php
+        require 'MyClasses/connexion.php';
+        require 'MyClasses/membre.php';
 
-    if (isset($_POST['email'])){
-        $v_email =  $_POST['email'];
+        if (isset($_POST['email'])){
+            $v_email =  $_POST['email'];
     
-        try {
-            $dbco = new PDO("mysql:host=localhost;dbname=projetpweb", "root", "");
-            $dbco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $c = new connexion();
+            $dbco = $c->connexion();
             $sth = $dbco->prepare("SELECT email FROM membre where email='".$v_email."'");
             $sth->execute();
             $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
@@ -78,28 +79,20 @@
             if (count($resultat) > 0){
                 echo "<script> alert('email déja existe !'); </script>";
             }else{
-                $dossier = "img/";
-                $fichier = basename($_FILES['file']['name']);
-                $v_file = $dossier.$fichier;
-                $v_nom = $_POST['nom'];
-                $v_prenom = $_POST['prenom'];
-                $v_mdp = $_POST['mdp'];
-                $v_fonction = $_POST['fonct'];
-                
-                $sth1 = $dbco->prepare("INSERT INTO membre(Nom,Prenom,email,mdp,fonction,PhUrl) VALUES (?,?,?,?,?,?) ");
-                $sth1->execute(array($v_nom, $v_prenom, $v_email, $v_mdp, $v_fonction, $v_file));
+                $m = new membre();
+                $m->setNom($_POST['nom']);
+                $m->setPrenom($_POST['prenom']);
+                $m->setEmail($_POST['email']);
+                $m->setMdp($_POST['mdp']);
+                $m->setFonction($_POST['fonct']);
+                $m->setImage(file_get_contents($_FILES['file']['tmp_name']));
+                $m->insert();
 
-                echo '<script> window.location.replace("http://localhost/gestion%20des%20p%C3%A9titions/LoginMembre.php"); </script>';
+                header("Location: LoginMembre.php");
 
             }
 
-        } catch (PDOException $e) {
-            echo $e->getMessage();
         }
-
-    }
-
-    
     ?>
 </body>
 <script src="js/inscription.js"></script>

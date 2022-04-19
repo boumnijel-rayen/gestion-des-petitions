@@ -29,40 +29,32 @@
             <input class="btnn" type="submit" value="se connecter">
         </form>
         <?php
+            require 'MyClasses/connexion.php';
+
             if( (isset($_POST['email'])) && (isset($_POST['mdp'])) ){
                 $v_email = $_POST['email'];
                 $v_mdp = $_POST['mdp'];
 
-                try {
-                    $dbco = new PDO("mysql:host=localhost;dbname=projetpweb", "root", "");
-                    $dbco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    $sth = $dbco->prepare("SELECT num_M ,email, mdp FROM membre where email='".$v_email."'");
-                    $sth->execute();
-                    $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
+                $c = new connexion();
+                $dbco = $c->connexion();
+                $sth = $dbco->prepare("SELECT num_M ,email, mdp FROM membre where email='".$v_email."'");
+                $sth->execute();
+                $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
 
-                    if (count($resultat) == 0){
-                        echo "<p class='erreur' >membre n'existe pas !</p>";
+                if (count($resultat) == 0){
+                    echo "<p class='erreur' >membre n'existe pas !</p>";
+                }else{
+                    if ($v_mdp != $resultat[0]["mdp"]){
+                        echo '<p class="erreur" >mot de passe incorrecte !</p>';
                     }else{
-                        if ($v_mdp != $resultat[0]["mdp"]){
-                            echo '<p class="erreur" >mot de passe incorrecte !</p>';
-                        }else{
-                            echo '<form action="espaceMembre.php" method="post">
-                            <input class="hide" type="text" name="id" value="'.$resultat[0]["num_M"].'" id="id">
-                            <input class="hide" type="submit" id="click" value="">
-                            </form>';
+                        session_start();
+                        $_SESSION['id'] = $resultat[0]["num_M"];
 
-                            echo "<script>document.getElementById('click').click();</script>";
-                        }
-                        
+                        header("Location: espaceMembre.php");
                     }
-
-                } catch (PDOException $e) {
-                    echo $e->getMessage();
+                        
                 }
             }
-
-
-
 
         ?>
         <div class="signup">

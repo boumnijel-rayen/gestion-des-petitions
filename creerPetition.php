@@ -11,34 +11,26 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
+    <?php
+        session_start();
+        $vID = $_SESSION['id'];
+    ?>
     <header>
         <nav>
             <div class="left-nav">
                 <a href="#"><img src="img/petition_logo.webp" alt=""></a>
                 <ul id="list">
-                    <form action="espaceMembre.php" method="post">
-                        <?php
-                            $vID = $_POST['id'];
-                            echo '<input type="text" class="hide" value="'.$vID.'" name="id" id="id">';
-                        ?>  
+                    <form action="espaceMembre.php" method="post">  
                         <li>
                             <input type="submit" class="sbtn" value="liste des pétitions">
                         </li>
                     </form>
                     <form action="" method="post">
-                        <?php
-                            $vID = $_POST['id'];
-                            echo '<input type="text" class="hide" value="'.$vID.'" name="id" id="id">';
-                        ?> 
                         <li>
                             <input type="submit" class="sbtn" value="créer une pétition">
                         </li>
                     </form>
                     <form action="profile.php" method="post">
-                        <?php
-                            $vID = $_POST['id'];
-                            echo '<input type="text" class="hide" value="'.$vID.'" name="id" id="id">';
-                        ?>
                         <li>
                         <input type="submit" class="sbtn" value="profile">
                         </li>
@@ -49,20 +41,18 @@
                 <img src="img/IMG_0130.webp" alt="">
                 <ul>
                     <?php
-                        $vID = $_POST['id'];
-                        echo '<li>'.$vID.'</li>';
-                        try {
-                            $dbco = new PDO("mysql:host=localhost;dbname=projetpweb", "root", "");
-                            $dbco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                            $sth = $dbco->prepare("SELECT nom, prenom FROM membre where num_M=".$vID);
-                            $sth->execute();
-                            $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
+                        require 'MyClasses/connexion.php';
 
-                            echo '<li>'.$resultat[0]["nom"].' '.$resultat[0]["prenom"].'</li>';
+                        echo '<li>'.$vID.'</li>';
+
+                        $c = new connexion();
+                        $dbco = $c->connexion();
+                        $sth = $dbco->prepare("SELECT nom, prenom FROM membre where num_M=".$vID);
+                        $sth->execute();
+                        $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+                        echo '<li>'.$resultat[0]["nom"].' '.$resultat[0]["prenom"].'</li>';
                          
-                        } catch (PDOException $e) {
-                            echo $e->getMessage();
-                        }
                     ?>
                 </ul>
                 <a href="#" onclick="togglemenu();"><i class="bi bi-list"></i></a>
@@ -86,10 +76,6 @@
                     <label for="image" class="form-label">Image</label>
                     <input class="form-control form-control-sm" id="image" type="file">
                 </div>
-                <?php
-                    $vID = $_POST['id'];
-                    echo '<input type="text" class="hide" value="'.$vID.'" name="id" id="id">';
-                ?>
                 <input class="btnn" type="submit" onclick="return verif();" value="créer">
             </form>
         </div>
@@ -106,31 +92,8 @@
     </footer>
     <?php
     ?>
-    <script>
-        function verif() {
-        titre = document.getElementById('titre').value;
-        des = document.getElementById('titre-ex').value;
-        file = document.getElementById('image').value;
-
-        alert("test");
-
-        if (titre == ""){
-            alert("le titre de pétition vide!");
-            return false;
-        }else if (des == ""){
-            alert("la decription de la pétition vide !");
-            return false;
-        }else if (des.length >250){
-            alert("la description doit etre au maximum de 250 caractère");
-            return false;
-        }else if (file.trim() == ""){
-            alert("choisissez une image pour la pétition");
-            return false;
-        }
-
-        }
-    </script>
+    <script src="js/creerPetition.js" async></script>
 </body>
-<script src="js/creerPetition.js"></script>
+
 <script src="js/toggleMenu.js"></script>
 </html>
