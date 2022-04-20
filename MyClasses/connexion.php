@@ -12,7 +12,7 @@ class connexion{
             $this->con = new PDO("mysql:host=".$this->server.";dbname=projetpweb", $this->username, "");
             $this->con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
-            $e->getMessage();
+            echo $e->getMessage();
         }
         return $this->con;
     }

@@ -171,6 +171,21 @@ footer p{
     text-align: center;
 }
 
+.success{
+    text-align: center;
+    background-color: rgb(27, 180, 27);
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: 20px;
+    width: 80%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 15px;
+    padding: 10px;
+}
+
 
 
 @media screen and (max-width : 600px) {

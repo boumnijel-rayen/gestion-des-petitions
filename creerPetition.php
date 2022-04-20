@@ -35,6 +35,11 @@
                         <input type="submit" class="sbtn" value="profile">
                         </li>
                     </form>
+                    <form action="LoginMembre.php" method="post">
+                        <li>
+                        <input type="submit" class="sbtn" value="Déconnecter">
+                        </li>
+                    </form>
                 </ul>
             </div>
             <div class="right-nav">
@@ -63,24 +68,40 @@
     <section id="creer">
         <div class="center">
             <h3>Création d'une pétition</h3>
-            <form action="#" method="post">
+            <form action="" method="post" enctype="multipart/form-data">
                 <div class="txt">
                     <label for="titre" class="form-label">Titre</label>
-                    <input type="text" class="form-control" id="titre" placeholder="Titre de la pétition">
+                    <input type="text" class="form-control" name="titre" id="titre" placeholder="Titre de la pétition">
                 </div>
                 <div class="txt">
                     <label for="text-ex" class="form-label">Text explicatif</label>
-                    <textarea class="form-control" id="text-ex" rows="3"></textarea>
+                    <textarea class="form-control" name="text-ex" id="text-ex" rows="3"></textarea>
                 </div>
                 <div class="txt">
                     <label for="image" class="form-label">Image</label>
-                    <input class="form-control form-control-sm" id="image" type="file">
+                    <input class="form-control form-control-sm" name="image" id="image" type="file">
                 </div>
-                <input class="btnn" type="submit" onclick="return verif();" value="créer">
+                <input class="btnn" type="submit" id="btnS" onclick="return verif();" value="créer">
             </form>
+            <?php
+                require 'MyClasses/petition.php';
+
+                if ( (isset($_POST['titre'])) && (isset($_POST['text-ex'])) ){
+
+                    $p = new petition();
+                    $p->setTitre($_POST['titre']);
+                    $p->setText($_POST['text-ex']);
+                    $p->setNum_M($vID);
+                    $p->setImage(file_get_contents($_FILES['image']['tmp_name']));
+                    $p->insert();
+
+                    echo '<p class="success">pétition creé avec success</p>';
+                }
+
+            ?>
         </div>
     </section>
-
+        
     <footer>
         <ul>
             <li><a href="https://github.com/boumnijel-rayen" target="_blank"><i class="bi bi-github"></i></a></li>
@@ -90,10 +111,8 @@
         </ul>
         <p>Copyright ©2022 Boumnijel Rayen, all rights reserved</p>
     </footer>
-    <?php
-    ?>
+    
     <script src="js/creerPetition.js" async></script>
 </body>
-
 <script src="js/toggleMenu.js"></script>
 </html>

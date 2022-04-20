@@ -67,6 +67,13 @@ class petition{
         $this->image = $image;
     }
 
+    public function insert(){
+        $c = new connexion();
+        $dbco = $c->connexion();
+        $sth = $dbco->prepare("INSERT INTO petition(titre,dateDeCreation,text,num_m,image) VALUES (?,curdate(),?,?,?) ");
+        $sth->execute(array($this->titre ,$this->text ,$this->num_M ,$this->image));
+    }
+
 }
 
 ?>
