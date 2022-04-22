@@ -37,6 +37,14 @@ class commenter{
         $this->contenu = $contenu;
     }
 
+    public function insert(){
+        $c = new connexion();
+        $dbco = $c->connexion();
+
+        $sth = $dbco->prepare("INSERT INTO commenter(num_m, num_p, contenu) VALUES (?,?,?) ");
+        $sth->execute(array($this->num_M,$this->num_P,$this->contenu));
+    }
+
 }
 
 ?>

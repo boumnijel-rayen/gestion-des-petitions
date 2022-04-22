@@ -12,6 +12,8 @@
 </head>
 <body>
     <?php
+        session_start();
+        $vID = $_SESSION['id'];
     ?>
     <form class="retour">
         <input type = "button" value = "Retour"  onclick = "history.back()">
@@ -20,16 +22,42 @@
         <div class="container">
             <div class="row">
                 <div class="col-4 coll">
-                    <img src="img/petition-photo.webp" alt="">
-                    <h4><span class="vert">150</span> signatures</h4>
-                    <h4><span class="rouge">20</span> désapprouver</h4>
+                    <?php
+                    require 'MyClasses/connexion.php';
+
+                    $numP = $_POST['code'];                   
+                        
+                    $c = new connexion();
+                    $dbco = $c->connexion();
+                    $sth = $dbco->prepare("SELECT * from petition where num_p=".$numP);
+                    $sth->execute();
+                    $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+                    echo '<img src="data:image/jpg;base64,'.base64_encode( $resultat[0]['image'] ).'"/>';
+
+                    $sth1 = $dbco->prepare("SELECT * FROM editer WHERE num_p=".$numP." and participe=1");
+                    $sth1->execute();
+                    $resultat1 = $sth1->fetchAll(PDO::FETCH_ASSOC);
+
+                    $sth2 = $dbco->prepare("SELECT * FROM editer WHERE num_p=".$numP." and participe=0");
+                    $sth2->execute();
+                    $resultat2 = $sth2->fetchAll(PDO::FETCH_ASSOC);
+
+                    echo '<h4><span class="vert">'.count($resultat1).'</span> signatures</h4>';
+                    echo '<h4><span class="rouge">'.count($resultat2).'</span> désapprouver</h4>';
+
+                    ?>
                     <div class="flex">
                         <form action="petition.php" method="POST">
-                            <input class="hide" name="code" type="text" value="1234">
+                            <?php
+                            echo '<input class="hide" name="code" type="text" value="'.$numP.'">';
+                            ?>
                             <input type="submit" class="button-81" value="Signer">
                         </form>
                         <form action="petition.php" method="POST">
-                            <input class="hide" name="code" type="text" value="1234">
+                            <?php
+                            echo '<input class="hide" name="code" type="text" value="'.$numP.'">';
+                            ?>
                             <input type="submit" class="button-81" value="S’opposer">
                         </form>
                     </div>
@@ -37,39 +65,74 @@
                         <form action="" method="post">
                             <label for="pet-select">Liste d'approuver</label>
                             <select name="pets" id="pet-select">
-                                <option value="dog">Dog</option>
-                                <option value="cat">Cat</option>
-                                <option value="hamster">Hamster</option>
-                                <option value="parrot">Parrot</option>
-                                <option value="spider">Spider</option>
-                                <option value="goldfish">Goldfish</option>
+                                <?php
+                                for ($i=0; $i <count($resultat1) ; $i++) { 
+                                    $sth3 = $dbco->prepare("SELECT * from membre where num_m=".$resultat1[$i]['num_m']);
+                                    $sth3->execute();
+                                    $resultat3 = $sth3->fetchAll(PDO::FETCH_ASSOC);
+
+                                    echo '<option value="'.$resultat3[0]["nom"].' '.$resultat3[0]["prenom"].'">'.$resultat3[0]["nom"].' '.$resultat3[0]["prenom"].'</option>';
+                                }
+                                ?>
                             </select>
                         </form>
                         <form action="" method="post">
                             <label for="pet-select">Liste de désapprouver</label>
                             <select name="pets" id="pet-select">
-                                <option value="dog">Dog</option>
-                                <option value="cat">Cat</option>
-                                <option value="hamster">Hamster</option>
-                                <option value="parrot">Parrot</option>
-                                <option value="spider">Spider</option>
-                                <option value="goldfish">Goldfish</option>
+                                <?php
+                                for ($i=0; $i <count($resultat2) ; $i++) { 
+                                    $sth3 = $dbco->prepare("SELECT * from membre where num_m=".$resultat2[$i]['num_m']);
+                                    $sth3->execute();
+                                    $resultat3 = $sth3->fetchAll(PDO::FETCH_ASSOC);
+
+                                    echo '<option value="'.$resultat3[0]["nom"].' '.$resultat3[0]["prenom"].'">'.$resultat3[0]["nom"].' '.$resultat3[0]["prenom"].'</option>';
+                                }
+                                ?>
                             </select>
                         </form>
                     </div>
                 </div>
                 <div class="col-8 coll">
                     <div class="flex">
-                        <h2>titre de pétition</h2>
-                        <p>04/04/2022</p>
-                    </div>  
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi pariatur voluptates atque aliquid eligendi excepturi ex quo? Eos quo perspiciatis aut aliquid voluptates, veritatis aliquam fugit beatae asperiores, consequatur fugiat dolores maxime cupiditate saepe quaerat.</p>
-                    <p>créé par <span class="rouge">nom & prenom</span></p>
-                    <form action="" method="post">
+                        <?php
+                        
+                        echo '<h2>'.$resultat[0]["titre"].'</h2>';
+                        
+                        ?>      
+                    </div>
+                    <?php
+                    echo '<p>'.$resultat[0]["dateDeCreation"].'</p>';
+                    echo '<p>'.$resultat[0]["text"].'</p>';
+
+                    $sth3 = $dbco->prepare("SELECT * from membre where num_m=".$resultat[0]['num_m']);
+                    $sth3->execute();
+                    $resultat3 = $sth3->fetchAll(PDO::FETCH_ASSOC);
+
+                    echo '<p>créé par <span class="rouge">'.$resultat3[0]["nom"].' '.$resultat3[0]["prenom"].'</span></p>';
+                    
+                    ?>
+                    <form action="petition.php" method="post">
                         <label for="comnt" class="form-label">écrire un commentaire</label>
-                        <textarea class="form-control" id="comnt" rows="3"></textarea>
-                        <input type="submit" class="btn btn-success" value="commenter">
+                        <textarea class="form-control" name="comnt" id="comnt" rows="3"></textarea>
+                        <?php
+                            echo '<input class="hide" name="code" type="text" value="'.$numP.'">';
+                        ?>
+                        <input type="submit" class="btn btn-success" onclick="return verif();" value="commenter">
                     </form>
+                    <?php
+
+                    require 'MyClasses/commenter.php';
+                    
+                    if (isset($_POST['comnt'])) {
+                        $co = new commenter();
+                        $co->setContenu($_POST['comnt']);
+                        $co->setNum_M($vID);
+                        $co->setNum_P($numP);
+                        $co->insert();
+                        echo '<p class="success">votre commentaire est bien ajouté</p>';
+                    }
+                    
+                    ?>
                 </div>
             </div>
         </div>
@@ -80,6 +143,11 @@
     <section id="comnts">
         <div class="container">
         <h3>Commentaires</h3>
+            <?php
+
+            
+
+            ?>
             <div class="row">
                 <div class="col-2 coll">
                     <img src="img/IMG_0130.webp" alt="">
@@ -120,4 +188,5 @@
         <p>Copyright ©2022 Boumnijel Rayen, all rights reserved</p>
     </footer>
 </body>
+<script src="js/commentaire.js"></script>
 </html>
