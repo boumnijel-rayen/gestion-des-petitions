@@ -43,18 +43,18 @@
                 </ul>
             </div>
             <div class="right-nav">
-                <img src="img/IMG_0130.webp" alt="">
-                <ul>
                     <?php
                         require 'MyClasses/connexion.php';
-                        echo '<li>'.$vID.'</li>';
+                        
 
                         $c = new connexion();
                         $dbco = $c->connexion();
-                        $sth = $dbco->prepare("SELECT nom, prenom FROM membre where num_M=".$vID);
+                        $sth = $dbco->prepare("SELECT nom, prenom,image FROM membre where num_M=".$vID);
                         $sth->execute();
                         $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
-
+                        echo '<img src="data:image/jpg;base64,'.base64_encode( $resultat[0]['image'] ).'"/>';
+                        echo '<ul>';
+                        echo '<li>'.$vID.'</li>';
                         echo '<li>'.$resultat[0]["nom"].' '.$resultat[0]["prenom"].'</li>';
                     ?>
                 </ul>
@@ -65,60 +65,119 @@
     
     <section id="profile" class="center">
         <h2>Modifier votre profile</h2>
-        <form action="" method="post">
-            <div class="block_txt">
-                <div class="txt">
-                    <input type="text" value="rayen" name="nom" id="nom" required>
-                    <span></span>
-                    <label>Nom</label>
+
+        <?php
+
+        $c = new connexion();
+        $dbco = $c->connexion();
+        $sth = $dbco->prepare("SELECT * from membre where num_M=".$vID);
+        $sth->execute();
+        $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+        echo '<form action="profile.php" method="post" enctype="multipart/form-data">
+                <div class="block_txt">
+                    <div class="txt">
+                        <input type="text" value="'.$resultat[0]["nom"].'" name="nom" id="nom" required>
+                        <span></span>
+                        <label>Nom</label>
+                    </div>
+                    <div class="txt">
+                        <input type="text" id="prenom" name="prenom" value="'.$resultat[0]["prenom"].'" required>
+                        <span></span>
+                        <label>Prénom</label>
+                    </div>
                 </div>
                 <div class="txt">
-                    <input type="text" id="prenom" required>
+                    <input type="text" value="'.$resultat[0]["email"].'" id="email" name="email" required>
                     <span></span>
-                    <label>Prénom</label>
+                    <label>Email</label>
                 </div>
-            </div>
-            <div class="txt">
-                <input type="text" value="rayen" id="email" required>
-                <span></span>
-                <label>Email</label>
-            </div>
-            <div class="block_txt">
-                <div class="txt">
-                    <input type="text" id="mdp" required>
-                    <span></span>
-                    <label>Mot de passe</label>
+                <div class="block_txt">
+                    <div class="txt">
+                        <input type="text" id="mdp" value="'.$resultat[0]["mdp"].'" name="mdp" required>
+                        <span></span>
+                        <label>Mot de passe</label>
+                    </div>
+                    <div class="txt">
+                        <input type="text" id="cmdp" value="'.$resultat[0]["mdp"].'" required>
+                        <span></span>
+                        <label>Confirmation</label>
+                    </div>
                 </div>
-                <div class="txt">
-                    <input type="text" id="cmdp" required>
-                    <span></span>
-                    <label>Confirmation</label>
+                <div class="radio">';
+
+                if ($resultat[0]["fonction"] == 'etudiant'){
+                    echo'    <p>Vous êtes ?</p>
+                    <input type="radio" id="etd" name="fonct" checked value="etudiant">
+                    <label for="etd">étudiant</label><br>
+                    <input type="radio" id="prof" name="fonct" value="prof">
+                    <label for="prof">prof</label><br>
+                    <input type="radio" id="pa" name="fonct" value="pAdmin">
+                    <label for="pa">personnel administratif</label>';
+                }else{
+                    if ($resultat[0]["fonction"] == 'prof'){
+                        echo'    <p>Vous êtes ?</p>
+                            <input type="radio" id="etd" name="fonct" value="etudiant">
+                            <label for="etd">étudiant</label><br>
+                            <input type="radio" id="prof" name="fonct" checked value="prof">
+                            <label for="prof">prof</label><br>
+                            <input type="radio" id="pa" name="fonct" value="pAdmin">
+                            <label for="pa">personnel administratif</label>';
+                    }else{
+                        echo'    <p>Vous êtes ?</p>
+                            <input type="radio" id="etd" name="fonct" value="etudiant">
+                            <label for="etd">étudiant</label><br>
+                            <input type="radio" id="prof" name="fonct" value="prof">
+                            <label for="prof">prof</label><br>
+                            <input type="radio" id="pa" name="fonct" checked value="pAdmin">
+                            <label for="pa">personnel administratif</label>';
+                    }
+                }
+
+                echo' </div>
+                <div class="file">
+                    <label class="custom-file-upload" id="upl" oninput="file_selected();">
+                        <input type="file" id="file" name="file">
+                        <i class="bi bi-cloud-arrow-up-fill"></i> Photo de profile
+                    </label>
                 </div>
-            </div>
-            <div class="radio">
-                <p>Vous êtes ?</p>
-                <input type="radio" id="etd" name="fonct" value="etudiant">
-                <label for="etd">étudiant</label><br>
-                <input type="radio" id="prof" name="fonct" value="prof">
-                <label for="prof">prof</label><br>
-                <input type="radio" id="pa" name="fonct" value="pAdmin">
-                <label for="pa">personnel administratif</label>
-            </div>
-            <div class="file">
-                <label class="custom-file-upload" id="upl" oninput="file_selected();">
-                    <input type="text" class="hide" name="image" id="image">
-                    <input type="file" id="file">
-                    <i class="bi bi-cloud-arrow-up-fill"></i> Photo de profile
-                </label>
-            </div>
-            <input type="submit" class="btnn" onclick="return verif();" value="Modifier">
-        </form> 
+                <input type="submit" class="btnn" onclick="return verif();" value="Modifier">
+            </form>';
+
+
+        ?>
+
+        <?php
+
+        require 'MyClasses/membre.php';
+
+        if (isset($_POST['nom'])){
+            
+            $m = new membre();
+            $m->setNum_M($vID);
+            $m->setNom($_POST['nom']);
+            $m->setPrenom($_POST['prenom']);
+            $m->setEmail($_POST['email']);
+            $m->setMdp($_POST['mdp']);
+            $m->setFonction($_POST['fonct']);
+
+            if (! $m->isExist()){
+                if ($_FILES['file']['name'] != ""){
+                    $m->setImage(file_get_contents($_FILES['file']['tmp_name']));
+                    $m->updateWithFile();
+                }else{
+                    $m->updateWithoutFile();
+                }
+                echo "<p class='success'>votre profile est modifié avec success !</p>";
+            }else{
+                echo "<p class='success erreur'>Email déja existe !</p>";
+            }
+            
+        }
+
+        ?>
     </section>
-
-
-    <?php
-    ?>
 </body>
-<script src="js/inscription.js"></script>
+<script src="js/modifierProfile.js"></script>
 <script src="js/toggleMenu.js"></script>
 </html>

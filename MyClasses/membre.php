@@ -83,6 +83,34 @@ class membre{
         $sth->execute(array($this->nom, $this->prenom, $this->email, $this->mdp, $this->fonction, $this->image));
     }
 
+    public function updateWithFile(){
+        $conn=mysqli_connect("localhost","root","","projetpweb");
+        $imageData = mysqli_real_escape_string($conn ,$this->image);
+        $UpdateQuery = "update membre set nom='".$this->nom."', prenom='".$this->prenom."', email='".$this->email."', mdp='".$this->mdp."', fonction='".$this->fonction."', image='$imageData' where num_M=".$this->num_M;
+        mysqli_query($conn,$UpdateQuery);
+    }
+
+    public function updateWithoutFile()
+    {
+        $c = new connexion();
+        $dbco = $c->connexion();
+        $sth = $dbco->prepare("update membre set nom='".$this->nom."', prenom='".$this->prenom."', email='".$this->email."', mdp='".$this->mdp."', fonction='".$this->fonction."' where num_M=".$this->num_M);
+        $sth->execute();
+    }
+
+    public function isExist(){
+        $c = new connexion();
+        $dbco = $c->connexion();
+        $sth = $dbco->prepare("SELECT email from membre where email='".$this->email."' and num_M != ".$this->num_M);
+        $sth->execute();
+        $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
+        if (count($resultat) > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }
 
 ?>

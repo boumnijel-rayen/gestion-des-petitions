@@ -43,19 +43,18 @@
                 </ul>
             </div>
             <div class="right-nav">
-                <img src="img/IMG_0130.webp" alt="">
-                <ul>
                     <?php
                         require 'MyClasses/connexion.php';
 
-                        echo '<li>'.$vID.'</li>';
-
                         $c = new connexion();
                         $dbco = $c->connexion();
-                        $sth = $dbco->prepare("SELECT nom, prenom FROM membre where num_M=".$vID);
+                        $sth = $dbco->prepare("SELECT nom, prenom, image FROM membre where num_M=".$vID);
                         $sth->execute();
                         $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
-
+                        
+                        echo '<img src="data:image/jpg;base64,'.base64_encode( $resultat[0]['image'] ).'"/>';
+                        echo '<ul>';
+                        echo '<li>'.$vID.'</li>';
                         echo '<li>'.$resultat[0]["nom"].' '.$resultat[0]["prenom"].'</li>';
                          
                     ?>

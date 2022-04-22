@@ -236,6 +236,23 @@ form .file input{
     transition: .5s;
 }
 
+.success{
+    text-align: center;
+    background-color: rgb(27, 180, 27);
+    color: white;
+    font-weight: 500;
+    font-size: 12px;
+    margin-top: 10px;
+    width: 55%;
+    transform: translateX(8%);
+    border-radius: 15px;
+    padding: 8px;
+}
+
+.erreur{
+    background-color: #f44336;
+}
+
 
 @media screen and (max-width : 600px){
     /*HEADER*/

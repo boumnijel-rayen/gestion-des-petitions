@@ -95,11 +95,11 @@
                             <p><span>'.$donnees["nb"].'</span> signatures</p>
                             <p class="petition-text">'.$resultat[$i]["text"].'</p>
                             <div class="flex">
-                                <form action="petition.php" method="POST">
+                                <form action="participer.php" method="POST">
                                     <input class="hide" name="code" type="text" value="'.$resultat[$i]["num_p"].'">
                                     <input type="submit" class="button-81" value="Signer">
                                 </form>
-                                <form action="petition.php" method="POST">
+                                <form action="participer.php" method="POST">
                                     <input class="hide" name="code" type="text" value="'.$resultat[$i]["num_p"].'">
                                     <input type="submit" class="button-81" value="S’opposer">
                                 </form>
