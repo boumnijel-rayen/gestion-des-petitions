@@ -37,6 +37,36 @@ class editer{
         $this->participe = $participe;
     }
 
+    public function isExiste(){
+        $c = new connexion();
+        $dbco = $c->connexion();
+
+        $sth = $dbco->prepare("SELECT * FROM editer where num_p=".$this->num_P." and num_m=".$this->num_M);
+        $sth->execute();
+        $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+        if (count($resultat) > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function participer(){
+
+        if ($this->participe == 'S'){
+            $p = 1;
+        }else{
+            $p = 0;
+        }
+
+        $c = new connexion();
+        $dbco = $c->connexion();
+
+        $sth = $dbco->prepare("INSERT INTO editer(num_m, num_p, participe) VALUES (?,?,?) ");
+        $sth->execute(array($this->num_M ,$this->num_P ,$p));
+    }
+
 }
 
 ?>

@@ -39,7 +39,19 @@
         <div id="slider">
             <div class="contenu">
                 <h2><span>GESTION </span>DES<span> PETITIONS</span></h2>
-                <p>Déjà 227 763 357 signatures</p>
+                <?php
+                require 'MyClasses/connexion.php';
+
+                $c = new connexion();
+                $dbco = $c->connexion();
+                $req = $dbco->query("SELECT COUNT(*) as nb FROM editer WHERE participe=1");
+                $donnees = $req->fetch();
+                $req->closeCursor();
+
+                echo '<p>Déjà '.$donnees["nb"].' signatures</p>';
+
+                ?>
+                
                 <a href="LoginMembre.php"><button type="button" class="btn btn-outline-light">Lancer une Pétition</button></a>
             </div>   
             <figure>

@@ -67,7 +67,28 @@
     <div class="titre-pt">
         <h2>Liste des pétitions</h2>
     </div>
+    <!--<p class="erreur">vous avez déja participer à cette pétition</p>-->
+    <?php
+    require 'MyClasses/editer.php';
+    
+    if (isset($_POST['code'])){
+        $numP = $_POST['code'];
+        
+        $e = new editer();
+        $e->setNum_M($vID);
+        $e->setNum_P($_POST['code']);
+        $e->setParticipe($_POST['part']);
 
+        if (! $e->isExiste()){
+            $e->participer();
+            echo '<p class="success">Vous avez participer avec success !</p>';
+        }else{
+            echo '<p class="erreur">vous avez déja participer à cette pétition</p>';;
+        }
+        
+    }
+
+    ?>
     <section class="lst-petition">
         <div class="container">
             <?php
@@ -95,11 +116,13 @@
                             <p><span>'.$donnees["nb"].'</span> signatures</p>
                             <p class="petition-text">'.$resultat[$i]["text"].'</p>
                             <div class="flex">
-                                <form action="participer.php" method="POST">
+                                <form action="espaceMembre.php" method="POST">
+                                    <input class="hide" name="part" type="text" value="S">
                                     <input class="hide" name="code" type="text" value="'.$resultat[$i]["num_p"].'">
                                     <input type="submit" class="button-81" value="Signer">
                                 </form>
-                                <form action="participer.php" method="POST">
+                                <form action="espaceMembre.php" method="POST">
+                                    <input class="hide" name="part" type="text" value="O">
                                     <input class="hide" name="code" type="text" value="'.$resultat[$i]["num_p"].'">
                                     <input type="submit" class="button-81" value="S’opposer">
                                 </form>
@@ -127,8 +150,6 @@
         </ul>
         <p>Copyright ©2022 Boumnijel Rayen, all rights reserved</p>
     </footer>
-    <?php
-    ?>
 </body>
 <script src="js/toggleMenu.js"></script>
 </html>

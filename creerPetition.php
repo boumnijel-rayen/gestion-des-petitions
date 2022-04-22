@@ -67,14 +67,14 @@
     <section id="creer">
         <div class="center">
             <h3>Création d'une pétition</h3>
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="" method="post" name="f" enctype="multipart/form-data">
                 <div class="txt">
                     <label for="titre" class="form-label">Titre</label>
                     <input type="text" class="form-control" name="titre" id="titre" placeholder="Titre de la pétition">
                 </div>
                 <div class="txt">
                     <label for="text-ex" class="form-label">Text explicatif</label>
-                    <textarea class="form-control" name="text-ex" id="text-ex" rows="3"></textarea>
+                    <textarea class="form-control" name="text" id="text" rows="3"></textarea>
                 </div>
                 <div class="txt">
                     <label for="image" class="form-label">Image</label>
@@ -83,13 +83,13 @@
                 <input class="btnn" type="submit" id="btnS" onclick="return verif();" value="créer">
             </form>
             <?php
-                require 'MyClasses/petition.php';
+               require 'MyClasses/petition.php';
 
-                if ( (isset($_POST['titre'])) && (isset($_POST['text-ex'])) ){
+                if ( (isset($_POST['titre'])) && (isset($_POST['text'])) ){
 
                     $p = new petition();
                     $p->setTitre($_POST['titre']);
-                    $p->setText($_POST['text-ex']);
+                    $p->setText($_POST['text']);
                     $p->setNum_M($vID);
                     $p->setImage(file_get_contents($_FILES['image']['tmp_name']));
                     $p->insert();
@@ -109,9 +109,8 @@
             <li><a href="https://www.linkedin.com/in/rayen-boumnijel-3774b91b7/" target="_blank"><i class="bi bi-linkedin"></i></a></li>
         </ul>
         <p>Copyright ©2022 Boumnijel Rayen, all rights reserved</p>
-    </footer>
-    
-    <script src="js/creerPetition.js" async></script>
+    </footer>  
 </body>
+<script src="js/creerPetitionScript.js"></script>
 <script src="js/toggleMenu.js"></script>
 </html>

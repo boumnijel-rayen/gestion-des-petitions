@@ -1,9 +1,9 @@
 function verif() {
-    titre = document.getElementById('titre').value;
-    des = document.getElementById('titre-ex').value;
-    file = document.getElementById('image').value;
 
-    alert("test");
+    titre = document.f.titre.value;
+    des = document.f.text.value;
+    file = document.f.image.value;
+
 
     if (titre == ""){
         alert("le titre de pétition vide!");
@@ -18,5 +18,7 @@ function verif() {
         alert("choisissez une image pour la pétition");
         return false;
     }
+    
+    
 
 }
