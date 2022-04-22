@@ -16,7 +16,7 @@
         $vID = $_SESSION['id'];
     ?>
     <form class="retour">
-        <input type = "button" value = "Retour"  onclick = "history.back()">
+        <input type = "button" value = "Retour"  onclick = "window.location.href = 'http://localhost/gestion%20des%20p%C3%A9titions/espaceMembre.php';">
     </form>
     <section id="petition">
         <div class="container">
@@ -50,17 +50,40 @@
                     <div class="flex">
                         <form action="petition.php" method="POST">
                             <?php
+                            echo '<input class="hide" name="codeP" type="text" value="'.$numP.'">';
                             echo '<input class="hide" name="code" type="text" value="'.$numP.'">';
+                            echo '<input class="hide" name="part" type="text" value="S">';
                             ?>
                             <input type="submit" class="button-81" value="Signer">
                         </form>
                         <form action="petition.php" method="POST">
                             <?php
+                            echo '<input class="hide" name="codeP" type="text" value="'.$numP.'">';
                             echo '<input class="hide" name="code" type="text" value="'.$numP.'">';
+                            echo '<input class="hide" name="part" type="text" value="O">';
                             ?>
                             <input type="submit" class="button-81" value="S’opposer">
                         </form>
                     </div>
+                    <?php
+                        require 'MyClasses/editer.php';
+
+                        if (isset($_POST['codeP'])){
+                            
+                            $e = new editer();
+                            $e->setNum_M($vID);
+                            $e->setNum_P($_POST['codeP']);
+                            $e->setParticipe($_POST['part']);
+                    
+                            if (! $e->isExiste()){
+                                $e->participer();
+                                echo '<p class="successI">Vous avez participer avec success !</p>';
+                            }else{
+                                echo '<p class="erreur">vous avez déja participer à cette pétition</p>';;
+                            }
+                            
+                        }
+                        ?>
                     <div class="flex">
                         <form action="" method="post">
                             <label for="pet-select">Liste d'approuver</label>
@@ -145,36 +168,29 @@
         <h3>Commentaires</h3>
             <?php
 
+            $c = new connexion();
+            $dbco = $c->connexion();
+            $sth = $dbco->prepare("SELECT * from commenter where num_p=".$numP);
+            $sth->execute();
+            $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
+
             
+            for ($i=0 ; $i<count($resultat);$i++){
+                $sth1 = $dbco->prepare("SELECT * from membre where num_m=".$resultat[$i]['num_m']);
+                $sth1->execute();
+                $resultat1 = $sth1->fetchAll(PDO::FETCH_ASSOC);
+                echo '<div class="row">
+                        <div class="col-2 coll">';
+                        echo '<img src="data:image/jpg;base64,'.base64_encode( $resultat1[0]['image'] ).'"/>';
+                        echo'</div>
+                        <div class="col-10 coll">
+                            <h5>'.$resultat1[0]["nom"].' '.$resultat1[0]["prenom"].'</h5>
+                            <p>'.$resultat[$i]["contenu"].'</p>
+                        </div>
+                    </div>';
+            }
 
             ?>
-            <div class="row">
-                <div class="col-2 coll">
-                    <img src="img/IMG_0130.webp" alt="">
-                </div>
-                <div class="col-10 coll">
-                    <h5>nom & prénom</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat at neque voluptate.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-2 coll">
-                    <img src="img/IMG_0130.webp" alt="">
-                </div>
-                <div class="col-10 coll">
-                    <h5>nom & prénom</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat at neque voluptate.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-2 coll">
-                    <img src="img/IMG_0130.webp" alt="">
-                </div>
-                <div class="col-10 coll">
-                    <h5>nom & prénom</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat at neque voluptate.</p>
-                </div>
-            </div>
         </div>
     </section>
 
