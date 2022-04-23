@@ -253,6 +253,22 @@ form .file input{
     background-color: #f44336;
 }
 
+.Dec{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #f44336;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    background-color: #f44336;
+}
+
+.Dec:hover{
+    color: #f44336;
+    background-color: transparent;
+}
+
 
 @media screen and (max-width : 600px){
     /*HEADER*/

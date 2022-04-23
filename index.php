@@ -12,6 +12,13 @@
 </head>
 <body>
 
+    <?php
+        session_start();
+        if (isset($_SESSION['id'])){
+            session_unset();
+        }
+    ?>
+
     <!--HEADER-->
 
     <header>
@@ -21,7 +28,7 @@
                 <ul id="list">
                     <a href="#how-section"><li>Découvrez la plateforme</li></a>
                     <a href="inscription.php"><li>Inscription</li></a>
-                    <a href="#"><li>Espace Admin</li></a>
+                    <a href="LoginAdmin.php"><li>Espace Admin</li></a>
                 </ul>
             </div>
             <div class="right-nav">

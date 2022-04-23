@@ -35,14 +35,10 @@
                         <input type="submit" class="sbtn" value="profile">
                         </li>
                     </form>
-                    <form action="LoginMembre.php" method="post">
-                        <li>
-                        <input type="submit" class="sbtn" value="Déconnecter">
-                        </li>
-                    </form>
                 </ul>
             </div>
             <div class="right-nav">
+                <a href="index.php" class="Dec">Déconnexion</a>
                     <?php
                         require 'MyClasses/connexion.php';
 
