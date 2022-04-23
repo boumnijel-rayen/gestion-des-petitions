@@ -74,6 +74,13 @@ class petition{
         $sth->execute(array($this->titre ,$this->text ,$this->num_M ,$this->image));
     }
 
+    public function supprimer(){
+        $c = new connexion();
+        $dbco = $c->connexion();
+        $sth = $dbco->prepare("DELETE from petition where num_p=".$this->num_P);
+        $sth->execute();
+    }
+
 }
 
 ?>

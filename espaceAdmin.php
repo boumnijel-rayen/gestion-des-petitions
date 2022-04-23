@@ -51,6 +51,27 @@
         <h2>Liste des pétitions</h2>
     </div>
 
+    <?php
+    require 'MyClasses/petition.php';
+    require 'MyClasses/editer.php';
+    
+    if (isset($_POST['codeS'])){
+        $numP = $_POST['codeS'];
+        
+        $p = new petition();
+        $p->setNum_P($_POST['codeS']);
+        $p->supprimer();
+        
+        $e = new editer();
+        $e->setNum_P($_POST['codeS']);
+        $e->deleteAll();
+
+        echo '<p class="success">supprission fait avec success</p>';
+        
+    }
+
+    ?>
+
     <section class="lst-petition">
     <div class="container">
             <?php
@@ -83,7 +104,7 @@
                                     <input type="submit" class="button-81" value="Supprimer">
                                 </form>
                             </div>
-                            <form action="" method="POST">
+                            <form action="petitionAdmin" method="POST">
                                 <input class="hide" name="code" type="text" value="'.$resultat[$i]["num_p"].'">
                                 <input type="submit" class="btnn" value="Voir Plus">
                             </form>

@@ -67,6 +67,14 @@ class editer{
         $sth->execute(array($this->num_M ,$this->num_P ,$p));
     }
 
+    public function deleteAll(){
+        $c = new connexion();
+        $dbco = $c->connexion();
+        $sth = $dbco->prepare("DELETE from editer where num_p=".$this->num_P);
+        $sth->execute();
+
+    }
+
 }
 
 ?>
