@@ -111,6 +111,42 @@ class membre{
         }
     }
 
+    public function nbMemebre(){
+        $c = new connexion();
+        $dbco = $c->connexion();
+        $sth = $dbco->prepare("SELECT COUNT(*) as nb FROM membre");
+        $sth->execute();
+        $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
+        return $resultat[0]["nb"];
+    }
+
+    public function nbEtudiant(){
+        $c = new connexion();
+        $dbco = $c->connexion();
+        $sth = $dbco->prepare("SELECT COUNT(*) as nb FROM membre where fonction='etudiant'");
+        $sth->execute();
+        $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
+        return $resultat[0]["nb"];
+    }
+
+    public function nbProf(){
+        $c = new connexion();
+        $dbco = $c->connexion();
+        $sth = $dbco->prepare("SELECT COUNT(*) as nb FROM membre where fonction='prof'");
+        $sth->execute();
+        $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
+        return $resultat[0]["nb"];
+    }
+
+    public function nbPresA(){
+        $c = new connexion();
+        $dbco = $c->connexion();
+        $sth = $dbco->prepare("SELECT COUNT(*) as nb FROM membre where fonction='pAdmin'");
+        $sth->execute();
+        $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
+        return $resultat[0]["nb"];
+    }
+
 }
 
 ?>

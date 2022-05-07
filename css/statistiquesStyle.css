@@ -1,3 +1,7 @@
+body{
+    margin: 0;   
+}
+
 *{
     font-family: 'Montserrat', sans-serif;
 }
@@ -31,21 +35,18 @@ header nav .left-nav ul li{
     position: relative;
 }
 
-header nav .left-nav ul li .sbtn{
+header nav .left-nav ul a{
     text-decoration: none;
     color: black;
-    margin-top: 25px;
-    margin-left: 10px;
-    margin-right: 10px;
-    background-color: transparent;
-    border: none;
+    margin-top: 14px;
+    padding: 12px;
 }
 
 header nav .left-nav ul li::before{
     content: '';
     width: 0;
     height: 3px;
-    background-color: #f44336;
+    background-color: #5a2ff5;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -54,7 +55,27 @@ header nav .left-nav ul li::before{
 }
 
 header nav .left-nav ul li:hover::before{
-    width: 90%;
+    width: 100%;
+}
+
+header nav .btnn-c{
+    padding: 8px;
+    color: black;
+    background-color: white;
+    border-radius: 7px;
+    margin-top: 16px;
+    margin-right: 20px;
+    cursor: pointer;
+    border: 1px solid #f44336;
+}
+
+header nav .btnn-c:hover{
+    background-color: #f44336;
+    color: white;
+}
+
+header nav.left-nav ul a:hover{
+    color: black;
 }
 
 header nav .right-nav {
@@ -78,7 +99,7 @@ header nav .right-nav ul li{
 
 header nav .right-nav ul li:nth-child(1){
     font-weight: 600;
-    color: #f44336;
+    color: #5a2ff5;
 }
 
 header nav .bi-list{
@@ -88,42 +109,89 @@ header nav .bi-list{
     top: 15%;
 }
 
-
-.hide{
-    position: absolute;
-    display: none;
-    visibility:hidden;
-}
-
-
-/*CREER UNE PETITION*/
-
-#creer{
-    margin: 80px;
-}
-
-#creer .center{
-    margin: 0 200px;
-    padding: 70px;
-    box-shadow: 0px 0px 7px #aaaaaa;
-}
-
-#creer .center h3{
-    text-align: center;
-    color: #f44336;
-    font-weight: 600;
-}
-
-#creer .center form .txt{
-    margin: 20px 0;
-}
-
-.btnn{
-    padding: 5px 10px;
-    color: white;
-    background-color: #f44336;
-    border-radius: 20px;
+.Dec{
+    margin-top: 15px;
+    margin-bottom: 15px;
     border: 1px solid #f44336;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    background-color: #f44336;
+}
+
+.Dec:hover{
+    color: #f44336;
+    background-color: transparent;
+}
+
+/*STATS*/
+
+#stat{
+    margin-top: 80px;
+}
+
+#stat .container .titre{
+    text-align: center;
+    font-size: 46px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    font-family: 'Akshar', sans-serif;
+}
+
+#stat .row{
+    margin: 30px 0;
+}
+
+#stat .row .col{
+    background-color: #F9F9F9;
+    box-shadow: 1px 1px 10px #888888;
+    padding: 20px;
+    margin: 0 10px;
+    text-align: center;
+    transition: 0.6s;
+}
+
+#stat .row .col:hover{
+    transform: scale(1.05);
+}
+
+#stat .row .col h3{
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+#stat .row .col .cercle{
+    background-color: #5a2ff5;
+    opacity: 80%;
+    width: 100px;
+    height: 100px;
+    border-radius:50px 0px 50px 50px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 20px;
+}
+
+.cp{
+    background-color: #f44336;
+    opacity: 80%;
+    width: 100px;
+    height: 100px;
+    border-radius:50px 0px 50px 50px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 20px;
+}
+
+#stat .row .col .cercle h5,.cp h5{
+    color: white;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 28px;
+    font-weight: 700;
 }
 
 
@@ -171,39 +239,6 @@ footer p{
     text-align: center;
 }
 
-.success{
-    text-align: center;
-    background-color: rgb(27, 180, 27);
-    color: white;
-    font-weight: 500;
-    font-size: 18px;
-    margin-top: 20px;
-    width: 80%;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 15px;
-    padding: 10px;
-}
-
-.Dec{
-    margin-top: 15px;
-    margin-bottom: 15px;
-    border: 1px solid #f44336;
-    padding: 10px;
-    text-decoration: none;
-    color: white;
-    font-weight: 600;
-    background-color: #f44336;
-}
-
-.Dec:hover{
-    color: #f44336;
-    background-color: transparent;
-}
-
-
-
 @media screen and (max-width : 600px) {
     
     /*HEADER*/
@@ -240,23 +275,18 @@ footer p{
     }
 
     .Dec{
-        margin-bottom: 20px;
-        margin-right: -5px;
-        margin-left: -5px;
-        padding: 6px;
-        font-weight: 500;
-        font-size: 12px;
+        font-size: 14px;
     }
 
-    /*CREER UNE PETITION*/
+    /*STATS*/
 
-    #creer{
-        margin: 60px;
-    }
-
-    #creer .center{
-        margin: 0px 0px;
-        padding: 10px;
+    #stat .row .col{
+        background-color: #F9F9F9;
+        box-shadow: 1px 1px 10px #888888;
+        padding: 20px;
+        margin: 20px 40px;
+        text-align: center;
+        transition: 0.6s;
     }
 
     /*FOOTER*/

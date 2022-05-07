@@ -143,7 +143,7 @@
             <li><a href="https://www.instagram.com/Rayen_boumnijel/?fbclid=IwAR2P8HQ-dnGLlI8Ahn3OSq1xIqW662KvAV2NWMcOs61ixz7QiAtpFAOH24o" target="_blank"><i class="bi bi-instagram"></i></a></li>
             <li><a href="https://www.linkedin.com/in/rayen-boumnijel-3774b91b7/" target="_blank"><i class="bi bi-linkedin"></i></a></li>
         </ul>
-        <p>Copyright ©2022 Boumnijel Rayen, all rights reserved</p>
+        <p>Copyright ©2022 Boumnijel Rayen & Majdy Ben  youssef, all rights reserved</p>
     </footer>
 </body>
 <script src="js/toggleMenu.js"></script>

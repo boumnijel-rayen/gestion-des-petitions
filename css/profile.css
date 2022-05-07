@@ -310,6 +310,15 @@ form .file input{
     .accueil{
         top: 10px;
     }
+
+    .Dec{
+        margin-bottom: 20px;
+        margin-right: -5px;
+        margin-left: -5px;
+        padding: 6px;
+        font-weight: 500;
+        font-size: 12px;
+    }
 }
 
 @media screen and (min-width : 1500px){

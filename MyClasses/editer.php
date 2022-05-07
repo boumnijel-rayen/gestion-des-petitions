@@ -72,7 +72,24 @@ class editer{
         $dbco = $c->connexion();
         $sth = $dbco->prepare("DELETE from editer where num_p=".$this->num_P);
         $sth->execute();
+    }
 
+    public function nbSParP(){
+        $c = new connexion();
+        $dbco = $c->connexion();
+        $sth = $dbco->prepare("SELECT COUNT(*) as nb FROM editer where participe=1 and num_p=".$this->num_P);
+        $sth->execute();
+        $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
+        return $resultat[0]["nb"];
+    }
+
+    public function nbPParP(){
+        $c = new connexion();
+        $dbco = $c->connexion();
+        $sth = $dbco->prepare("SELECT COUNT(*) as nb FROM editer where num_p=".$this->num_P);
+        $sth->execute();
+        $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
+        return $resultat[0]["nb"];
     }
 
 }

@@ -59,6 +59,7 @@
                     <?php
                         require 'MyClasses/petition.php';
                         require 'MyClasses/editer.php';
+                        require 'MyClasses/commenter.php';
 
                         if (isset($_POST['codeS'])){
                             
@@ -69,6 +70,10 @@
                             $e = new editer();
                             $e->setNum_P($_POST['codeS']);
                             $e->deleteAll();
+
+                            $co = new commenter();
+                            $co->setNum_P($_POST['codeS']);
+                            $co->deleteAll();
 
                             echo "<script>window.location.href = 'http://localhost/gestion%20des%20p%C3%A9titions/espaceAdmin.php';</script>";        
                             

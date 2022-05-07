@@ -81,6 +81,15 @@ class petition{
         $sth->execute();
     }
 
+    public function nbPetition(){
+        $c = new connexion();
+        $dbco = $c->connexion();
+        $sth = $dbco->prepare("SELECT COUNT(*) as nb FROM petition");
+        $sth->execute();
+        $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
+        return $resultat[0]["nb"];
+    }
+
 }
 
 ?>

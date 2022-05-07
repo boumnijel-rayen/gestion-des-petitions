@@ -45,6 +45,13 @@ class commenter{
         $sth->execute(array($this->num_M,$this->num_P,$this->contenu));
     }
 
+    public function deleteAll(){
+        $c = new connexion();
+        $dbco = $c->connexion();
+        $sth = $dbco->prepare("DELETE from commenter where num_p=".$this->num_P);
+        $sth->execute();
+    }
+
 }
 
 ?>

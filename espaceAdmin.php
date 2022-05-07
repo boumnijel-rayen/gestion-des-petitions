@@ -21,7 +21,7 @@
                 <a href="#"><img src="img/petition_logo.webp" alt=""></a>
                 <ul id="list">
                     <a href="#"><li>Liste des pétitions</li></a>
-                    <a href="#"><li>Statistiques</li></a>
+                    <a href="statistiques.php"><li>Statistiques</li></a>
                 </ul>
             </div>
             <div class="right-nav">
@@ -54,6 +54,7 @@
     <?php
     require 'MyClasses/petition.php';
     require 'MyClasses/editer.php';
+    require 'MyClasses/commenter.php';
     
     if (isset($_POST['codeS'])){
         $numP = $_POST['codeS'];
@@ -65,6 +66,10 @@
         $e = new editer();
         $e->setNum_P($_POST['codeS']);
         $e->deleteAll();
+
+        $co = new commenter();
+        $co->setNum_P($_POST['codeS']);
+        $co->deleteAll();
 
         echo '<p class="success">supprission fait avec success</p>';
         
@@ -125,7 +130,7 @@
             <li><a href="https://www.instagram.com/Rayen_boumnijel/?fbclid=IwAR2P8HQ-dnGLlI8Ahn3OSq1xIqW662KvAV2NWMcOs61ixz7QiAtpFAOH24o" target="_blank"><i class="bi bi-instagram"></i></a></li>
             <li><a href="https://www.linkedin.com/in/rayen-boumnijel-3774b91b7/" target="_blank"><i class="bi bi-linkedin"></i></a></li>
         </ul>
-        <p>Copyright ©2022 Boumnijel Rayen, all rights reserved</p>
+        <p>Copyright ©2022 Boumnijel Rayen & Majdy Ben  youssef, all rights reserved</p>
     </footer>
 </body>
 <script src="js/toggleMenu.js"></script>

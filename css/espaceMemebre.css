@@ -313,6 +313,15 @@ footer p{
         display: none;
     }
 
+    .Dec{
+        margin-bottom: 20px;
+        margin-right: -5px;
+        margin-left: -5px;
+        padding: 6px;
+        font-weight: 500;
+        font-size: 12px;
+    }
+
     /*FOOTER*/
 
     footer{
